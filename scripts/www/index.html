@@ -1,11 +1,835 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        PakePlus
-    </body>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高颜值面试题随机抽取系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 0, 128, 0.18), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(0, 200, 255, 0.18), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(140, 82, 255, 0.16), transparent 30%),
+        linear-gradient(135deg, #0f172a, #111827, #1e293b);
+      color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #fff, #93c5fd, #f0abfc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      background: rgba(99, 102, 241, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e0e7ff;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 180px 160px;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar input,
+    .toolbar select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .toolbar input::placeholder {
+      color: #cbd5e1;
+    }
+
+    .question-box {
+      min-height: 300px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,0.15), rgba(168,85,247,0.12)),
+        rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-box::before {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      filter: blur(10px);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    .question-text {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.7;
+      color: #ffffff;
+      z-index: 1;
+      word-break: break-word;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 13px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      transition: .25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    }
+
+    .btn-purple {
+      background: linear-gradient(135deg, #8b5cf6, #d946ef);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #10b981, #22c55e);
+    }
+
+    .btn-orange {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, #ef4444, #fb7185);
+    }
+
+    .btn-gray {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat .label {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .stat .value {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .list {
+      max-height: 580px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 4px;
+    }
+
+    .item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: .2s ease;
+      cursor: pointer;
+    }
+
+    .item:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .item small {
+      display: block;
+      color: #93c5fd;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .item div {
+      color: #e5e7eb;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .empty {
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 10px;
+      line-height: 1.8;
+    }
+
+    .footer-tip {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .question-text {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .question-text {
+        font-size: 20px;
+      }
+
+      .card-body,
+      .card-header {
+        padding: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>高颜值面试题随机抽取系统</h1>
+      <p>支持随机抽题、分类筛选、历史记录、收藏题目。无作答输入框，打开即可直接练习。</p>
+    </div>
+
+    <div class="main">
+      <!-- 左侧 -->
+      <div class="card">
+        <div class="card-header">
+          <h2>题目展示</h2>
+          <span class="tag" id="currentType">当前分类：全部</span>
+        </div>
+        <div class="card-body">
+          <div class="toolbar">
+            <input type="text" id="searchInput" placeholder="输入关键词搜索题目，如：诚信、乡村振兴、责任..." />
+            <select id="categorySelect">
+              <option value="全部">全部分类</option>
+            </select>
+            <select id="modeSelect">
+              <option value="random">随机模式</option>
+              <option value="order">顺序模式</option>
+            </select>
+          </div>
+
+          <div class="question-box">
+            <div class="meta">
+              <span class="tag" id="questionCategory">分类：未开始</span>
+              <span class="tag" id="questionNumber">题号：-</span>
+            </div>
+            <div class="question-text" id="questionText">点击下方“随机抽题”开始</div>
+          </div>
+
+          <div class="controls">
+            <button class="btn-primary" id="randomBtn">🎲 随机抽题</button>
+            <button class="btn-gray" id="prevBtn">⬅ 上一题</button>
+            <button class="btn-gray" id="nextBtn">➡ 下一题</button>
+            <button class="btn-purple" id="copyBtn">📋 复制题目</button>
+            <button class="btn-green" id="favoriteBtn">⭐ 收藏</button>
+            <button class="btn-orange" id="showAllBtn">📚 显示题库</button>
+            <button class="btn-red" id="clearHistoryBtn">🗑 清空历史</button>
+          </div>
+
+          <div class="footer-tip">
+            提示：这个版本已去掉“打字回答”功能，适合面试模拟抽题。
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧 -->
+      <div class="card">
+        <div class="card-header">
+          <h2>练习面板</h2>
+          <span class="tag" id="panelTitleTag">历史记录</span>
+        </div>
+        <div class="card-body">
+          <div class="stats">
+            <div class="stat">
+              <div class="label">题库总数</div>
+              <div class="value" id="totalCount">0</div>
+            </div>
+            <div class="stat">
+              <div class="label">当前可用</div>
+              <div class="value" id="currentCount">0</div>
+            </div>
+            <div class="stat">
+              <div class="label">抽题次数</div>
+              <div class="value" id="drawCount">0</div>
+            </div>
+            <div class="stat">
+              <div class="label">收藏数量</div>
+              <div class="value" id="favCount">0</div>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <button class="btn-gray" id="historyTab">🕘 历史</button>
+            <button class="btn-gray" id="favoriteTab">⭐ 收藏</button>
+            <button class="btn-gray" id="bankTab">📚 题库</button>
+          </div>
+
+          <div class="list" id="sideList">
+            <div class="empty">暂无内容</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questionBank = [
+      // 个人素质
+      { category: "个人素质", text: "请你自我介绍一下你自己？" },
+      { category: "个人素质", text: "你觉得你个性上最大的优点是什么？" },
+      { category: "个人素质", text: "说说你最大的缺点？或你认为自己有什么不足的地方？" },
+      { category: "个人素质", text: "用简要的语言介绍自己的家乡？" },
+      { category: "个人素质", text: "请说说你最喜欢的一句名言，并说说理由？" },
+      { category: "个人素质", text: "介绍一位好朋友及他对你的影响？" },
+      { category: "个人素质", text: "说一位你崇拜的历史人物？" },
+      { category: "个人素质", text: "学校举办读书分享会，请分享一本你最喜欢的书，并说说理由？" },
+      { category: "个人素质", text: "如果你竞选班长失败了，你会怎么做？" },
+      { category: "个人素质", text: "假如你到了一个陌生的城市，钱包丢了，你会怎么做？" },
+      { category: "个人素质", text: "谈谈你对勤工俭学的看法，假如勤工俭学影响到学习，你会怎么做？" },
+      { category: "个人素质", text: "你怎么看待大学生自主创业？" },
+      { category: "个人素质", text: "“天降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身……”出自哪本著作？请谈谈应该如何面对人生的挫折？" },
+      { category: "个人素质", text: "你能列举几项热胀冷缩的例子吗？" },
+      { category: "个人素质", text: "你是如何缓解压力的？当你遇到不开心的事，你是怎么做的？" },
+      { category: "个人素质", text: "作为当代大学生，你面对生活和学习上的压力，你会怎么样调节自己？" },
+      { category: "个人素质", text: "生活里最重要的是礼貌，它比最高的智慧，比一切学识重要。请你谈谈如何理解这句话？" },
+      { category: "个人素质", text: "你对大学/早恋谈恋爱的见解？" },
+      { category: "个人素质", text: "你如何看待别人在公共场所抽烟？" },
+      { category: "个人素质", text: "你对自己的人生有什么打算？" },
+      { category: "个人素质", text: "你喜欢和什么样的人交朋友？" },
+      { category: "个人素质", text: "你将来希望从事什么职业？" },
+      { category: "个人素质", text: "“做人以诚信为本”，你对此有何见解？" },
+      { category: "个人素质", text: "作为中学生，该如何远离诈骗？" },
+      { category: "个人素质", text: "你是如何看待淘宝刷单的行为？" },
+      { category: "个人素质", text: "谈谈你对“网贷”的认识？" },
+      { category: "个人素质", text: "人生就像一条曲线，你怎么理解？" },
+      { category: "个人素质", text: "你平时上网干什么？对网络怎么理解？" },
+      { category: "个人素质", text: "你怎么看待经常旷课的学生？" },
+      { category: "个人素质", text: "如果你身边出现学习习惯很差的学生，你该怎么做？" },
+      { category: "个人素质", text: "你的同学老师是怎么评价你的？" },
+      { category: "个人素质", text: "你认为当代大学生应该具备什么基本素质？" },
+      { category: "个人素质", text: "你认为成功应该具备哪些素质？" },
+      { category: "个人素质", text: "现在社会上流行“读书无用论”，对此你有什么看法？" },
+      { category: "个人素质", text: "智能手机占据了我们的大部分时间，请你谈谈看法？" },
+      { category: "个人素质", text: "被誉为“新四大发明”的高铁、移动支付、共享单车、网购给你的生活带来了哪些影响？" },
+      { category: "个人素质", text: "假如你的竞争对手比你更有竞争优势，你该如何应对？" },
+      { category: "个人素质", text: "某企业家说“什么是简单，能够把简单的事干一千遍，做到不简单”，你如何理解这句话？" },
+      { category: "个人素质", text: "请你谈谈对“勿以善小而不为，勿以恶小而为之”这句话的理解？" },
+      { category: "个人素质", text: "如果长辈有了错误，你将怎样与其沟通，让长辈改正？" },
+      { category: "个人素质", text: "请谈谈如何增强室友之间的信任感？" },
+      { category: "个人素质", text: "从小到大，父母所做的哪件事让你最感动？" },
+      { category: "个人素质", text: "百善孝为先，孝敬是根本。我们在生活中应该如何实际行动孝敬父母？" },
+      { category: "个人素质", text: "疫情结束以来，你最大的感受是什么？" },
+      { category: "个人素质", text: "某集团公司提出：有德有才破格重用，有德无才培养使用，有才无德限制录用，无德无才坚决不用。你如何看待？" },
+      { category: "个人素质", text: "你认为学习成绩与能力有什么关系？" },
+      { category: "个人素质", text: "你觉得智商和情商，哪一个更重要？" },
+      { category: "个人素质", text: "“规矩不成方圆”，然而强调规矩有时又不利于创新，请你谈谈“规矩”和“创新”二者之间的辩证关系？" },
+      { category: "个人素质", text: "你如何理解“学好数理化，走遍天下都不怕”？" },
+      { category: "个人素质", text: "请问你参加过社会实践吗？" },
+      { category: "个人素质", text: "在你看来，大学生知识更重要还是实践能力更重要？为什么？" },
+      { category: "个人素质", text: "你和其他考生相比，你有什么优势？" },
+
+      // 国家时政
+      { category: "国家时政", text: "中国式现代化，既有各国现代化的共同特征，更有基于自己国情的中国特色。请谈谈你对中国式现代化的理解？" },
+      { category: "国家时政", text: "习近平总书记二十大报告中提出青年要有理想、有担当、能吃苦、敢奋斗，谈谈你是如何认识并实践的？" },
+      { category: "国家时政", text: "二十大提到了乡村振兴，人才是关键，请你结合实际情况谈一谈你的理解？" },
+      { category: "国家时政", text: "两会是什么？谈谈你对两会学习的体会？" },
+      { category: "国家时政", text: "就业是民生之本，解决就业问题，最根本的一条还是要靠发展经济。谈谈你的理解？" },
+      { category: "国家时政", text: "中国的传统节日有哪些？其中法定假日有哪些？" },
+      { category: "国家时政", text: "你如何理解大国工匠？" },
+      { category: "国家时政", text: "中国的24节气有哪些？" },
+      { category: "国家时政", text: "你对乡村振兴有什么看法？" },
+      { category: "国家时政", text: "请你谈谈对“责任与担当”的理解？" },
+      { category: "国家时政", text: "作为新时代青年，你如何为实现中华民族伟大复兴的中国梦贡献力量？" },
+      { category: "国家时政", text: "你认为参加青少年志愿者活动有哪些积极的意义？" },
+      { category: "国家时政", text: "近几年，人们以国产为荣，你怎么理解？" },
+      { category: "国家时政", text: "当代大学生该如何爱国？" },
+      { category: "国家时政", text: "谈谈你最近关注的两条时政新闻。" },
+      { category: "国家时政", text: "社会主义核心价值观中关于个人层面是什么内容？谈谈你的理解。" },
+
+      // 专业性问题
+      { category: "专业性问题", text: "为及时发现人体健康隐患，排除疾病诱因，成年人应至少多久做一次体检？有什么好处？" },
+      { category: "专业性问题", text: "请你列举预防传染病最有效、最经济的措施有哪些？" },
+      { category: "专业性问题", text: "每个人都有获得可达到最高标准的身体健康和心理健康的权利，这要求我们应该做到什么？" },
+      { category: "专业性问题", text: "健康人如何合理安排一日三餐？" },
+      { category: "专业性问题", text: "为了保护自己和他人的健康，应当养成哪些良好的卫生习惯？" },
+      { category: "专业性问题", text: "为预防动物把疾病传播给人，我们要做到什么？" },
+      { category: "专业性问题", text: "健康的生活方式包括哪些？" },
+      { category: "专业性问题", text: "在流感流行季节来临时，有哪些方式可以预防流感？" },
+      { category: "专业性问题", text: "健康的涵义包括哪几个方面？" },
+      { category: "专业性问题", text: "你如何理解工业4.0？" },
+      { category: "专业性问题", text: "你认为英语对你所报的专业是否有用？" },
+      { category: "专业性问题", text: "小学教育主要学习哪些课程？你认为作为一名人民教师应该具备哪些素质？" },
+      { category: "专业性问题", text: "作为教师/医生等应该具备的基本素养有哪些？" },
+      { category: "专业性问题", text: "电脑有哪些浏览器？" },
+      { category: "专业性问题", text: "你觉得你适合学护理专业吗？" },
+      { category: "专业性问题", text: "医学类学生一定要熟悉掌握中国公民素养66条。" },
+      { category: "专业性问题", text: "会计类专业要注意口算题型。" },
+      { category: "专业性问题", text: "报考幼专方向的考生，要熟悉保育相关政策、自我介绍和才艺展示。" }
+    ];
+
+    const STORAGE_KEY = "question_picker_beauty_v2";
+
+    let state = {
+      history: [],
+      favorites: [],
+      drawCount: 0,
+      currentQuestion: null,
+      currentFilteredIndex: -1,
+      panel: "history"
+    };
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (!data) return;
+      try {
+        state = { ...state, ...JSON.parse(data) };
+      } catch (e) {
+        console.log("读取本地数据失败");
+      }
+    }
+
+    function initCategories() {
+      const categorySet = [...new Set(questionBank.map(q => q.category))];
+      const select = document.getElementById("categorySelect");
+      categorySet.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+    }
+
+    function getFilteredList() {
+      const category = document.getElementById("categorySelect").value;
+      const keyword = document.getElementById("searchInput").value.trim();
+
+      return questionBank.filter(item => {
+        const matchCategory = category === "全部" || item.category === category;
+        const matchKeyword = !keyword || item.text.includes(keyword);
+        return matchCategory && matchKeyword;
+      });
+    }
+
+    function updateStats() {
+      document.getElementById("totalCount").textContent = questionBank.length;
+      document.getElementById("currentCount").textContent = getFilteredList().length;
+      document.getElementById("drawCount").textContent = state.drawCount;
+      document.getElementById("favCount").textContent = state.favorites.length;
+      document.getElementById("currentType").textContent = "当前分类：" + document.getElementById("categorySelect").value;
+    }
+
+    function showQuestion(question, filteredIndex = -1) {
+      if (!question) return;
+      state.currentQuestion = question;
+      state.currentFilteredIndex = filteredIndex;
+      saveState();
+
+      document.getElementById("questionText").textContent = question.text;
+      document.getElementById("questionCategory").textContent = "分类：" + question.category;
+      document.getElementById("questionNumber").textContent = "题号：" + (questionBank.findIndex(q => q.text === question.text) + 1);
+    }
+
+    function addHistory(question) {
+      state.history.unshift({
+        text: question.text,
+        category: question.category,
+        time: new Date().toLocaleString()
+      });
+      if (state.history.length > 100) state.history = state.history.slice(0, 100);
+      state.drawCount += 1;
+      saveState();
+      updateStats();
+      renderSideList();
+    }
+
+    function randomDraw() {
+      const list = getFilteredList();
+      if (!list.length) {
+        alert("当前筛选条件下没有题目。");
+        return;
+      }
+      const index = Math.floor(Math.random() * list.length);
+      const question = list[index];
+      showQuestion(question, index);
+      addHistory(question);
+    }
+
+    function nextQuestion() {
+      const list = getFilteredList();
+      if (!list.length) {
+        alert("当前没有题目。");
+        return;
+      }
+
+      const mode = document.getElementById("modeSelect").value;
+      if (mode === "random") {
+        randomDraw();
+        return;
+      }
+
+      let nextIndex = state.currentFilteredIndex + 1;
+      if (nextIndex >= list.length || nextIndex < 0) nextIndex = 0;
+
+      const question = list[nextIndex];
+      showQuestion(question, nextIndex);
+      addHistory(question);
+    }
+
+    function prevQuestion() {
+      const list = getFilteredList();
+      if (!list.length) {
+        alert("当前没有题目。");
+        return;
+      }
+
+      let prevIndex = state.currentFilteredIndex - 1;
+      if (prevIndex < 0) prevIndex = list.length - 1;
+
+      const question = list[prevIndex];
+      showQuestion(question, prevIndex);
+    }
+
+    function copyQuestion() {
+      if (!state.currentQuestion) {
+        alert("请先抽取题目。");
+        return;
+      }
+      navigator.clipboard.writeText(state.currentQuestion.text)
+        .then(() => alert("题目已复制"))
+        .catch(() => alert("复制失败，请手动复制"));
+    }
+
+    function toggleFavorite() {
+      if (!state.currentQuestion) {
+        alert("请先抽取题目。");
+        return;
+      }
+
+      const exists = state.favorites.find(item => item.text === state.currentQuestion.text);
+      if (exists) {
+        state.favorites = state.favorites.filter(item => item.text !== state.currentQuestion.text);
+        alert("已取消收藏");
+      } else {
+        state.favorites.unshift({
+          text: state.currentQuestion.text,
+          category: state.currentQuestion.category,
+          time: new Date().toLocaleString()
+        });
+        alert("已收藏");
+      }
+      saveState();
+      updateStats();
+      renderSideList();
+    }
+
+    function clearHistory() {
+      if (!confirm("确定清空历史记录吗？")) return;
+      state.history = [];
+      state.drawCount = 0;
+      saveState();
+      updateStats();
+      renderSideList();
+    }
+
+    function renderSideList() {
+      const listDom = document.getElementById("sideList");
+      const tag = document.getElementById("panelTitleTag");
+      let data = [];
+
+      if (state.panel === "history") {
+        tag.textContent = "历史记录";
+        data = state.history;
+      } else if (state.panel === "favorite") {
+        tag.textContent = "收藏题目";
+        data = state.favorites;
+      } else {
+        tag.textContent = "题库列表";
+        data = getFilteredList().map(item => ({
+          text: item.text,
+          category: item.category,
+          time: ""
+        }));
+      }
+
+      if (!data.length) {
+        listDom.innerHTML = '<div class="empty">暂无内容</div>';
+        return;
+      }
+
+      listDom.innerHTML = data.map((item, index) => `
+        <div class="item" data-text="${escapeHtml(item.text)}">
+          <small>${index + 1}. ${item.category}${item.time ? " · " + item.time : ""}</small>
+          <div>${escapeHtml(item.text)}</div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".item").forEach(el => {
+        el.addEventListener("click", () => {
+          const text = htmlDecode(el.dataset.text);
+          const filtered = getFilteredList();
+          const found = questionBank.find(q => q.text === text);
+          const idx = filtered.findIndex(q => q.text === text);
+          if (found) showQuestion(found, idx);
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function htmlDecode(input) {
+      const e = document.createElement("textarea");
+      e.innerHTML = input;
+      return e.value;
+    }
+
+    function bindEvents() {
+      document.getElementById("randomBtn").addEventListener("click", randomDraw);
+      document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+      document.getElementById("prevBtn").addEventListener("click", prevQuestion);
+      document.getElementById("copyBtn").addEventListener("click", copyQuestion);
+      document.getElementById("favoriteBtn").addEventListener("click", toggleFavorite);
+      document.getElementById("clearHistoryBtn").addEventListener("click", clearHistory);
+
+      document.getElementById("historyTab").addEventListener("click", () => {
+        state.panel = "history";
+        saveState();
+        renderSideList();
+      });
+
+      document.getElementById("favoriteTab").addEventListener("click", () => {
+        state.panel = "favorite";
+        saveState();
+        renderSideList();
+      });
+
+      document.getElementById("bankTab").addEventListener("click", () => {
+        state.panel = "bank";
+        saveState();
+        renderSideList();
+      });
+
+      document.getElementById("showAllBtn").addEventListener("click", () => {
+        state.panel = "bank";
+        renderSideList();
+      });
+
+      document.getElementById("searchInput").addEventListener("input", () => {
+        updateStats();
+        if (state.panel === "bank") renderSideList();
+      });
+
+      document.getElementById("categorySelect").addEventListener("change", () => {
+        updateStats();
+        if (state.panel === "bank") renderSideList();
+      });
+
+      document.getElementById("modeSelect").addEventListener("change", () => {
+        const mode = document.getElementById("modeSelect").value;
+        console.log("当前模式：", mode);
+      });
+    }
+
+    function init() {
+      loadState();
+      initCategories();
+      bindEvents();
+      updateStats();
+      renderSideList();
+
+      if (state.currentQuestion) {
+        const filtered = getFilteredList();
+        const idx = filtered.findIndex(q => q.text === state.currentQuestion.text);
+        const found = questionBank.find(q => q.text === state.currentQuestion.text);
+        if (found) showQuestion(found, idx);
+      }
+    }
+
+    init();
+  </script>
+</body>
 </html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
